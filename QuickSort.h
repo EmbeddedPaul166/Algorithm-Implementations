@@ -7,7 +7,7 @@ class QuickSort : public SortingAlgorithm<T>
 public:
 	QuickSort();
 	virtual ~QuickSort();
-	virtual void sort(T array[], int start, int end, bool ascending);
+	virtual void sort(T array[], int start, int end);
 private:
 	int partition(T array[], int start, int end);
 };
@@ -25,13 +25,13 @@ QuickSort<T>::~QuickSort()
 }
 
 template<class T>
-void QuickSort<T>::sort(T array[], int start, int end, bool ascending)
+void QuickSort<T>::sort(T array[], int start, int end)
 {
     if (start < end)
     {
         int index = partition(array, start, end);
-        sort(array, start, index - 1, ascending);
-        sort(array, index + 1, end, ascending);
+        sort(array, start, index - 1);
+        sort(array, index + 1, end);
     }
 }
 

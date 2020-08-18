@@ -7,7 +7,7 @@ class MergeSort : public SortingAlgorithm<T>
 public:
     MergeSort();
     virtual ~MergeSort();
-    virtual void sort(T array[], int start, int end, bool ascending);
+    virtual void sort(T array[], int start, int end);
 private:
     void merge(T array[], int start, int middle, int end);
 };
@@ -25,13 +25,13 @@ MergeSort<T>::~MergeSort()
 }
 
 template<class T>
-void MergeSort<T>::sort(T array[], int start, int end, bool ascending)
+void MergeSort<T>::sort(T array[], int start, int end)
 {
     if (start < end)
     {
         int middle = (start + end) / 2;
-        sort(array, start, middle, ascending);
-        sort(array, middle + 1, end, ascending);
+        sort(array, start, middle);
+        sort(array, middle + 1, end);
 
         merge(array, start, middle, end);
     }
@@ -89,5 +89,6 @@ void MergeSort<T>::merge(T array[], int start, int middle, int end)
         k++;
     }
 
-    delete L, R;
+    delete L;
+    delete R;
 }

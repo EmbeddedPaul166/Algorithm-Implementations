@@ -7,5 +7,5 @@ public:
 	SearchingAlgorithm() {}
 	virtual ~SearchingAlgorithm() {}
 
-	virtual T search(T array[], bool isAscending) = 0;
+	virtual T search(T array[], int start, int end, T x) = 0;
 };
