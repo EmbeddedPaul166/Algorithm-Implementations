@@ -1,10 +1,11 @@
 #include <iostream>
 #include "QuickSort.h"
+#include "MergeSort.h"
 
 template <typename T>
-void printArray(T array[], int length)
+void printArray(T array[], int length, std::string type)
 {
-    std::cout << "Sorted array:" << std::endl;
+    std::cout << "Array sorted by " << type << ":" << std::endl;
     for (int i = 0; i < length; i++)
     {
         std::cout << array[i] << std::endl;
@@ -13,12 +14,20 @@ void printArray(T array[], int length)
 
 int main()
 {
-    int array[] = { 5, 7, 4, 2, 9, 6 };
-    int n = sizeof(array) / sizeof(array[0]);
+    int arrayOne[] = { 5, 7, 4, 2, 9, 6 };
+    int n = sizeof(arrayOne) / sizeof(arrayOne[0]);
 
-    QuickSort<int> sorter;
-    sorter.sort(array, 0, n - 1, true);
-    printArray<int>(array, 6);
+    QuickSort<int> quickSorter;
+    quickSorter.sort(arrayOne, 0, n - 1, true);
+    printArray<int>(arrayOne, 6, "Quick Sort");
+
+    int arrayTwo[] = { 5, 7, 4, 2, 9, 6 };
+    n = sizeof(arrayTwo) / sizeof(arrayTwo[0]);
+
+    MergeSort<int> mergeSorter;
+    mergeSorter.sort(arrayTwo, 0, n - 1, true);
+    printArray<int>(arrayTwo, 6, "Merge Sort");
+
     std::cin.get();
 	return 0;
 }
